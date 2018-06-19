@@ -24,7 +24,9 @@ db.init_app(app)
 def add_token():
     if request.method == 'POST':
         payload = request.json
+        print(payload)
         at = add_access_token(payload)
+
         return jsonify({'statusCode': 200, 'response': {'id':str(at.id)}}), 200
     else:
         tokens = get_access_tokens()
