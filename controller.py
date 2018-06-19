@@ -1,3 +1,5 @@
+from bson import ObjectId
+
 from model import *
 
 
@@ -7,7 +9,7 @@ def get_access_token(token):
 
 
 def add_access_token(payload):
-    at = AccessToken.objects(user_id=payload['user_id']).first()
+    at = AccessToken.objects(user_id=ObjectId(payload['user_id'])).first()
     if at:
         print(at.to_json())
 
