@@ -22,7 +22,7 @@ db.init_app(app)
 @app.route("/api/token", methods=["POST"])
 def add_token():
     payload = request.json
-    at = add_token(payload)
+    at = add_access_token(payload)
     return jsonify({'statusCode': 200, 'response': {'id':str(at.id)}}), 200
 
 
