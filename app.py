@@ -19,11 +19,16 @@ app.config['MONGODB_PASSWORD'] = 's4WbwyymZ2R1vLVC'
 db = MongoEngine()
 db.init_app(app)
 
-@app.route("/api/token", methods=["POST"])
+
+@app.route("/api/token", methods=["GET","POST"])
 def add_token():
-    payload = request.json
-    at = add_access_token(payload)
-    return jsonify({'statusCode': 200, 'response': {'id':str(at.id)}}), 200
+    if request.method == 'POST':
+        payload = request.json
+        at = add_access_token(payload)
+        return jsonify({'statusCode': 200, 'response': {'id':str(at.id)}}), 200
+    else:
+        tokens = get_access_tokens()
+        return jsonify({'statusCode': 200, 'response': tokens})
 
 
 @app.route("/api/check_authorization/<string:token>", methods=["GET"])

@@ -13,7 +13,7 @@ class AccessToken(Document):
     token = StringField(required=True)
     created_when = DateTimeField(required=True, default=datetime.datetime.now())
     expired_when = DateTimeField(required=True)
-
+    user_id = ObjectIdField(required=True)
     meta = {'queryset_class': CustomQuerySet}
 
     def to_json(self):
