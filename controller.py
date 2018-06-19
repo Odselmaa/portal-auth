@@ -8,6 +8,7 @@ def get_access_token(token):
 
 def add_access_token(payload):
     at = AccessToken.objects(user_id=payload['user_id']).first()
+    print(at)
     if at:
         at.provider=payload['provider']
         at.token=payload['token']
