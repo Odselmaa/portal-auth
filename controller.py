@@ -8,7 +8,7 @@ def get_access_token(token):
 def add_access_token(payload):
     at = AccessToken(provider=payload['provider'],
                      token=payload['token'],
-                     created_when=payload['created_when'],
-                     expired_when=payload['expired_when'])
+                     created_when=datetime.datetime.fromtimestamp(payload['created_when']),
+                     expired_when=datetime.datetime.fromtimestamp(payload['expired_when']))
     at.save()
     return at
