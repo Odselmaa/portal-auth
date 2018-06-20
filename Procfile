@@ -1,1 +1,1 @@
-web: gunicorn app:app --log-file=- -w 4 --threads 4
+web: gunicorn app:app --log-file=- -w 2 --threads 2
